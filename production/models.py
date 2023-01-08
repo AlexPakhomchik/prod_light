@@ -8,7 +8,7 @@ class AluminiumProfile(models.Model):
     date_delete = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.profile
+        return f'{self.profile} - {self.value} кг'
 
 
 class LightModule(models.Model):
@@ -18,7 +18,7 @@ class LightModule(models.Model):
     date_delete = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.module
+        return f'{self.module} - {self.value} шт'
 
 
 class Driver(models.Model):
@@ -28,7 +28,7 @@ class Driver(models.Model):
     date_delete = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.drivers
+        return f'{self.drivers} - {self.value} шт'
 
 
 class Cover(models.Model):
@@ -38,7 +38,7 @@ class Cover(models.Model):
     date_delete = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.cover
+        return f'{self.cover} - {self.value} шт'
 
 
 class MountingSystem(models.Model):
@@ -48,5 +48,5 @@ class MountingSystem(models.Model):
     date_delete = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.mounting_system
+        return f'{self.mounting_system} - {self.value} шт'
 

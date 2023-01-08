@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from production.views import index
+from production.views import index, get_profile, get_module, get_driver, get_cover, get_mounting_system
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('start/', index)
+    path('start/', index),
+    path('profile/<str:prof>', get_profile),
+    path('module/<str:mod>', get_module),
+    path('driver/<str:drive>', get_driver),
+    path('cover/<str:cov>', get_cover),
+    path('mounting_system/<str:moun>', get_mounting_system),
 ]
