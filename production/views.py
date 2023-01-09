@@ -1,32 +1,34 @@
-from django.shortcuts import HttpResponse
-
+from rest_framework import generics
+from django.http import HttpResponse
 from production.models import AluminiumProfile, LightModule, Driver, Cover, MountingSystem
+from production.serializers import ProfileSerializer, LightModuleSerializer, DriverSerializer, CoverSerializer, \
+    MountingSystemSerializer
+
+
+class AluminiumProfileAPI(generics.ListAPIView):
+    queryset = AluminiumProfile.objects.all()
+    serializer_class = ProfileSerializer
+
+
+class LightModuleAPI(generics.ListAPIView):
+    queryset = LightModule.objects.all()
+    serializer_class = LightModuleSerializer
+
+
+class DriversAPI(generics.ListAPIView):
+    queryset = Driver.objects.all()
+    serializer_class = DriverSerializer
+
+
+class CoversAPI(generics.ListAPIView):
+    queryset = Cover.objects.all()
+    serializer_class = CoverSerializer
+
+
+class MountingSystemAPI(generics.ListAPIView):
+    queryset = MountingSystem.objects.all()
+    serializer_class = MountingSystemSerializer
 
 
 def index(request):
     return HttpResponse('start app')
-
-
-def get_profile(request, prof):
-    material = AluminiumProfile.objects.get(profile=prof)
-    return HttpResponse(material)
-
-
-def get_module(request, mod):
-    material = LightModule.objects.get(module=mod)
-    return HttpResponse(material)
-
-
-def get_driver(request, drive):
-    material = Driver.objects.get(drivers=drive)
-    return HttpResponse(material)
-
-
-def get_cover(request, cov):
-    material = Cover.objects.get(cover=cov)
-    return HttpResponse(material)
-
-
-def get_mounting_system(request, moun):
-    material = MountingSystem.objects.get(mounting_system=moun)
-    return HttpResponse(material)
