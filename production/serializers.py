@@ -8,6 +8,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = AluminiumProfile
         fields = ('profile', 'value')
 
+    def create(self, validate_data):
+        return AluminiumProfile.objects.create(**validate_data)
 
 class LightModuleSerializer(serializers.ModelSerializer):
     class Meta:
