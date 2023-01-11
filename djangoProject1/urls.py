@@ -26,4 +26,5 @@ urlpatterns = [
     path('driver/', DriversAPI.as_view()),
     path('cover/', CoversAPI.as_view()),
     path('mounting_system/', MountingSystemAPI.as_view()),
+    path('profile/<int:pk>/', AluminiumProfileAPI.as_view()),
 ]

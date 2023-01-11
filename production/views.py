@@ -18,6 +18,19 @@ class AluminiumProfileAPI(generics.ListAPIView):
 
         return Response({'Добавлено': serializer.data})
 
+    def put(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        if not pk:
+            return Response({'error': 'Invalid'})
+        try:
+            instance = AluminiumProfile.objects.get(pk=pk)
+        except:
+            return Response({'error': 'Not exists'})
+
+        serializer = ProfileSerializer(data=request.data, instance=instance)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({'update': serializer.data})
 
 
 class LightModuleAPI(generics.ListAPIView):
