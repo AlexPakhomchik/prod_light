@@ -27,4 +27,8 @@ urlpatterns = [
     path('cover/', CoversAPI.as_view()),
     path('mounting_system/', MountingSystemAPI.as_view()),
     path('profile/<int:pk>/', AluminiumProfileAPI.as_view()),
+    path('module/<int:pk>/', LightModuleAPI.as_view()),
+    path('driver/<int:pk>/', DriversAPI.as_view()),
+    path('cover/<int:pk>/', CoversAPI.as_view()),
+    path('mounting_system/<int:pk>/', MountingSystemAPI.as_view()),
 ]
