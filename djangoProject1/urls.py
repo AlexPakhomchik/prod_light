@@ -14,21 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from production.views import index, AluminiumProfileAPI, LightModuleAPI, DriversAPI, CoversAPI, MountingSystemAPI
+
+router = routers.SimpleRouter()
+router.register(r'profile', AluminiumProfileAPI)
+router.register(r'module', LightModuleAPI)
+router.register(r'driver', DriversAPI)
+router.register(r'cover', CoversAPI)
+router.register(r'mounting_system', MountingSystemAPI)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('start/', index),
-    path('profile/', AluminiumProfileAPI.as_view()),
-    path('module/', LightModuleAPI.as_view()),
-    path('driver/', DriversAPI.as_view()),
-    path('cover/', CoversAPI.as_view()),
-    path('mounting_system/', MountingSystemAPI.as_view()),
-    path('profile/<int:pk>/', AluminiumProfileAPI.as_view()),
-    path('module/<int:pk>/', LightModuleAPI.as_view()),
-    path('driver/<int:pk>/', DriversAPI.as_view()),
-    path('cover/<int:pk>/', CoversAPI.as_view()),
-    path('mounting_system/<int:pk>/', MountingSystemAPI.as_view()),
+    path('api/', include(router.urls)),
 ]
