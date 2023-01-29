@@ -18,7 +18,7 @@ class LightModuleSerializer(serializers.ModelSerializer):
 class DriverSerializer(serializers.ModelSerializer):
     class Meta:
         model = Driver
-        fields = ('drivers', 'value')
+        fields = ('driver', 'value')
 
 
 class CoverSerializer(serializers.ModelSerializer):

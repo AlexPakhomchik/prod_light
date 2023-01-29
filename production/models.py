@@ -22,13 +22,13 @@ class LightModule(models.Model):
 
 
 class Driver(models.Model):
-    drivers = models.CharField(max_length=30)
+    driver = models.CharField(max_length=30)
     value = models.IntegerField()
     date_update = models.DateTimeField(auto_now_add=True)
     date_delete = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.drivers} - {self.value} шт'
+        return f'{self.driver} - {self.value} шт'
 
 
 class Cover(models.Model):
