@@ -3,7 +3,7 @@ from django.db import models
 
 class AluminiumProfile(models.Model):
     profile = models.CharField(max_length=30)
-    value = models.FloatField()
+    value = models.FloatField(default=0)
     date_update = models.DateTimeField(auto_now_add=True)
     date_delete = models.DateTimeField(auto_now=True)
 
@@ -13,7 +13,7 @@ class AluminiumProfile(models.Model):
 
 class LightModule(models.Model):
     module = models.CharField(max_length=30)
-    value = models.FloatField()
+    value = models.FloatField(default=0)
     date_update = models.DateTimeField(auto_now_add=True)
     date_delete = models.DateTimeField(auto_now=True)
 
@@ -23,7 +23,7 @@ class LightModule(models.Model):
 
 class Driver(models.Model):
     driver = models.CharField(max_length=30)
-    value = models.IntegerField()
+    value = models.IntegerField(default=0)
     date_update = models.DateTimeField(auto_now_add=True)
     date_delete = models.DateTimeField(auto_now=True)
 
@@ -33,7 +33,7 @@ class Driver(models.Model):
 
 class Cover(models.Model):
     cover = models.CharField(max_length=30)
-    value = models.IntegerField()
+    value = models.IntegerField(default=0)
     date_update = models.DateTimeField(auto_now_add=True)
     date_delete = models.DateTimeField(auto_now=True)
 
@@ -43,7 +43,7 @@ class Cover(models.Model):
 
 class MountingSystem(models.Model):
     mounting_system = models.CharField(max_length=30)
-    value = models.IntegerField()
+    value = models.IntegerField(default=0)
     date_update = models.DateTimeField(auto_now_add=True)
     date_delete = models.DateTimeField(auto_now=True)
 
