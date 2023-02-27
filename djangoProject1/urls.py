@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-
-from production.views import index, AluminiumProfileAPI, LightModuleAPI, DriversAPI, CoversAPI, MountingSystemAPI
+from User.views import check_telegram_id, check_functionality
+from production.views import index, AluminiumProfileAPI, LightModuleAPI, DriversAPI, CoversAPI, MountingSystemAPI, \
+    LampAPI, delete_materials_lamp
 
 router = routers.SimpleRouter()
 router.register(r'profile', AluminiumProfileAPI)
@@ -25,10 +26,14 @@ router.register(r'module', LightModuleAPI)
 router.register(r'driver', DriversAPI)
 router.register(r'cover', CoversAPI)
 router.register(r'mounting_system', MountingSystemAPI)
+router.register(r'lamp', LampAPI)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('start/', index),
     path('api/', include(router.urls)),
+    path('check_telegram_id/', check_telegram_id),
+    path('delete_materials_lamp/', delete_materials_lamp),
+    path('check_functionality/', check_functionality),
 ]
