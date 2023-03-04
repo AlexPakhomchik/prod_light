@@ -1,13 +1,27 @@
 import json
-
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics, viewsets
-from django.http import JsonResponse, HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
-from production.models import AluminiumProfile, LightModule, Driver, Cover, MountingSystem, Lamp
+from production.models import AluminiumProfile, LightModule, Driver, Cover, MountingSystem, Lamp, History_log
 from production.serializers import ProfileSerializer, LightModuleSerializer, DriverSerializer, CoverSerializer, \
-    MountingSystemSerializer, LampSerializer
+    MountingSystemSerializer, LampSerializer, HistoryLogSerializer
+from datetime import datetime, timedelta
+
+
+class HistoryLogApi(viewsets.ModelViewSet):
+    now = datetime.utcnow()
+    seven_days_ago = now - timedelta(days=7)
+    queryset = History_log.objects.filter(date_update__gte=seven_days_ago)
+    serializer_class = HistoryLogSerializer
+
+    def update(self, request, *args, **kwargs):
+        pass
+
+    def destroy(self, request, *args, **kwargs):
+        pass
+
 
 
 class AluminiumProfileAPI(viewsets.ModelViewSet):
@@ -64,6 +78,9 @@ def delete_materials_lamp(request):
         return HttpResponse(status=204)
     else:
         return HttpResponseBadRequest()
+
+
+
 
 
 def index(request):

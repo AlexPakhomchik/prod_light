@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from User.models import User
+
 
 class AluminiumProfile(models.Model):
     profile = models.CharField(max_length=30)
@@ -68,3 +70,14 @@ class Lamp(models.Model):
     def __str__(self):
         return self.name_lamp
 
+
+class History_log(models.Model):
+    action = models.CharField(max_length=30)
+    category = models.CharField(max_length=20)
+    material = models.CharField(max_length=15)
+    value = models.FloatField(default=0)
+    date_update = models.DateTimeField(auto_now_add=True)
+    user = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'{self.user}: {self.action} {self.category} {self.material} - {self.value} шт'

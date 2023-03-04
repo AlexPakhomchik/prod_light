@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from production.models import AluminiumProfile, LightModule, Driver, Cover, MountingSystem, Lamp
+from production.models import AluminiumProfile, LightModule, Driver, Cover, MountingSystem, Lamp, History_log
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -54,3 +54,10 @@ class LampSerializer(serializers.ModelSerializer):
         data['use_cover'] = instance.use_cover.cover
         data['use_mounting_system'] = instance.use_mounting_system.mounting_system
         return data
+
+
+class HistoryLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = History_log
+        fields = ('user', 'action', 'material', 'value', 'date_update')
+
